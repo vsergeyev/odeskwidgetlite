@@ -1,0 +1,28 @@
+.odesk-title-default {
+    text-transform: capitalize;
+}
+
+.odesk-contractor-description-short {
+    width: 180px;
+    overflow: hidden;
+    max-height: 2.1em;
+}
+
+.odesk-job-desc-brief {
+    width: 220px;
+    overflow: hidden;
+    height: 3em;
+}
+
+ul.odesk-filter-items li {
+    padding-left: 1.8em!important;
+}
+
+ul.odesk-filter-items .range {
+    margin-right: 1.8em!important;
+}
+
+ul.odesk-filter-items label {
+    font-size: 11px!important;
+    margin-left: .6em;
+}

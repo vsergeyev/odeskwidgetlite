@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <title></title>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="widget.js"></script>
+
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="http://cdn.widget.odeskps.com/static/default_widget_look.css" />
+        <link rel="stylesheet" href="http://cdn.widget.odeskps.com/static/css/bootstrap.css" />
+        <link rel="stylesheet" href="style.css" />
+
+        <!-- ROW TEMPLATES -->
+        <!-- Jobs item row -->
+        <script id="jobsTemplate" type="text/x-jquery-tmpl">
+            <li class="odesk-job">
+                <div class="odesk-job-title">
+                    <a href="https://www.odesk.com/jobs/${ciphertext}" target=_blank>
+                        ${op_title}</a>
+                </div>
+
+                <div class="odesk-info-row odesk-job-details">
+                    <span class="odesk-info-job-type">${job_type}</span>
+                    <span class="odesk-minus">-</span>
+                    <span class="odesk-info-posted">
+                        <span class="odesk-info-posted-time-short-value">
+                                ${op_date_created}
+                        </span>
+                    </span>
+                </div>
+
+                <div class="odesk-job-info">
+                    <div class="odesk-info-row odesk-job-desc">
+                        <div class="odesk-job-desc-brief">
+                            ${op_desc_digest}
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </script>
+        <!-- END: ROW TEMPLATES -->
+
+        <!-- PAGINATOR TEMPLATE -->
+        <!-- Paginator item row -->
+        <script id="pagesTemplate" type="text/x-jquery-tmpl">
+            <li {{if current}}class="odesk-pagination-active"{{/if}}><a href='#{"offset": "${offset}"}'>${i}</a></li>
+        </script>
+        <!-- END: PAGINATOR TEMPLATE -->
+
+        <script type="text/javascript">
+            $(function() {
+                OdeskWidget.init({
+                    'id': 'odesk-widget',
+                    'api': 'jobs',
+                    'q': 'python',
+                    'perPage': '5',
+                    't': '', //'Hourly', // 'Hourly', 'Fixed'
+                    'wl': '', // '0' don't work as expected, API bug?
+                    //'dur': '1', // '0' don't work as expected, API bug?
+                    //'dp': '3',
+                    //'st': 'Completed',
+                    //'tba': '5',
+                    //'gr': 'phpfox'
+                });
+            });
+        </script>
+    </head>
+
+    <body>
+        <div class="odesk-apitype-listing" id="odesk-widget">
+            <div class="odesk-apitype-filter-and-sort">
+                <div class="odesk-widget-title">
+                    <div>
+                        <div class="odesk-title-default">
+                            oDesk
+                        </div>
+                    </div>
+                </div>
+                <div class="odesk-filters-widget">
+                    <div class="odesk-widget-search-keyword">
+                        <div class="odesk-widget-text">Filter by:</div>
+                        <input type="search" name="query" id="odesk-query" class="odesk-search-query" placeholder="Search by Keyword">
+                        <a href="javascript:void(0);" class="odesk-expand-filter-and-sort" style="display: none;">More...</a>
+                    </div>
+                </div>
+                <div class="odesk-filters-more">
+                </div>
+            </div>
+            <div class="odesk-widget-listing-panel"></div>
+            <div class="odesk-widget-footer">
+                <div>
+                    <a class="odesk-widget-more" href="" target=_blank>
+                        <span>See all</span>
+                        <span class="odesk-forward-image"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
